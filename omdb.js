@@ -28,13 +28,14 @@ function getMovie(title) {
     var rottenTomatoesRating;
     var rottenTomatoesURL;
 
-
-
     var titleParam = title;
     // /assugning request url using that title
     var omdbUrl = "http://www.omdbapi.com/?t=" + title + '&tomatoes=true&r=json';
     request(omdbUrl, function(error, response, body) {
         if (!error && response.statusCode == 200) {
+            if(command === 'movie-this' && process.argv[3]=== ''){
+                getMovie("Mr. Nobody");
+            }
             console.log(response);
             rBody = JSON.parse(body);
             // rJson = JSON.parse(response);

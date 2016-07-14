@@ -24,12 +24,12 @@ function getTweets(){
 	});
 	//print out your last 20 tweets in for loop
 	for (var i = 0; i < tweets.length; i++) {
-		
-		if(err){
-			return console.log(err);
-		}else{
+	
+			if(err){
+				return console.log(err);
+			}else{
 
-		}
+			}
 
 	}
 };

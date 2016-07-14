@@ -6,7 +6,9 @@ var twitterKeys = require('./keys').twitterKeys;
 // var imported_movie_command = movieModule.movie_command;
 var imported_movie_command = require('./omdb').movie_command;
 var twitter= require('./twitter').twitter_command;  //requires twitter function getTweets
-var spotify = require("spotify");
+var spotify = require('spotify');
+
+
 // movie-this
 // ************Structure of the console command**********
 // node liri.js movie-this '<movie name here>'
@@ -14,8 +16,8 @@ var spotify = require("spotify");
 // getting the command arg
 var command = process.argv[2];
 
-// confirm that console command works properly
-console.log(command);
+//  confirm that console command works properly
+// console.log(command);
 
 
 

@@ -19,8 +19,8 @@ Client_Secret="ba98f42bfab9485292f67368d4081708";
 
 var artist;
 var songTitle;
-var PrevLink;
-var Album;
+var prevLink;
+var album;
 
 
 
@@ -28,21 +28,23 @@ var Album;
 
 
  	function spotifySong(song){
-		spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(error, data) {
-		    if ( error ) {
+		spotify.search({ type: 'track', query: song }, function(error, data) {
+			console.log(data);	
+		    if (error){
 		        return console.log(error);
 		    }
-
-		    var songObj= data["tracks"]["items"]; //inside the data, there are 2 arrays called tracks and items. these are thena ssigned to songObj
+		    var songObj= data['tracks']['items']; //inside the data, there are 2 arrays called tracks and items. these are thena ssigned to songObj
 		    console.log(songObj);
 		    for (var i = 0; i < songObj.length; i++) {
-		    	console.log ('#' + i);
+		    	console.log(i);
 		    }
 		    var songSpecs={
-
-
+		    	artist:
+		    	songTitle:
+		    	prevLink:
+		    	album:
 		    }
-		 
+		 //I need to be able to access the data first!!
 		    // Do something with 'data' 
 		});
 
@@ -51,3 +53,5 @@ var Album;
 module.exports.spotify_command=spotifySong;  
 
 // module.exports.movie_command = getMovie;
+
+
