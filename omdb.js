@@ -1,24 +1,12 @@
+console.log('omdb connected');
+
 var request = require('request');
-// This will output the following information to your terminal/bash window:
 
-// Title of the movie.
-// Year the movie came out.
-// IMDB Rating of the movie.
-// Country where the movie was produced.
-// Language of the movie.
-// Plot of the movie.
-// Actors in the movie.
-// Rotten Tomatoes Rating.
-// Rotton Tomatoes URL
-// 
-// make an omdb request via request
 
-// / write a function to retrieve movie info take movie title
-// makes a request to omdb
-// 
+
 
 function getMovie(title) {
-    var title;
+    var dtitle;
     var year;
     var rating;
     var country;
@@ -28,18 +16,16 @@ function getMovie(title) {
     var rottenTomatoesRating;
     var rottenTomatoesURL;
 
-    var titleParam = title;
+ 
     // /assugning request url using that title
     var omdbUrl = "http://www.omdbapi.com/?t=" + title + '&tomatoes=true&r=json';
     request(omdbUrl, function(error, response, body) {
         if (!error && response.statusCode == 200) {
-            if(command === 'movie-this' && process.argv[3]=== ''){
-                getMovie("Mr. Nobody");
-            }
+           
             console.log(response);
             rBody = JSON.parse(body);
             // rJson = JSON.parse(response);
-            title = rBody['Title'];
+            dtitle = rBody['Title'];
             year = rBody['Year'];
             rating = rBody['Rated'];
             country = rBody['Country'];
@@ -48,7 +34,7 @@ function getMovie(title) {
             actors = rBody['Actors'];
             rottenTomatoesRating = rBody['tomatoRating'];
             rottenTomatoesURL = rBody['tomatoURL'];
-            console.log('the title is ', title);
+            console.log('the title is ', dtitle);
             console.log('the year is ', year);
             console.log('the rating is ', rating);
             console.log('the country is ', country);
@@ -67,4 +53,4 @@ function getMovie(title) {
 }
 
 
-module.exports.movie_command = getMovie;
+module.exports.movie_command = getMovie;  

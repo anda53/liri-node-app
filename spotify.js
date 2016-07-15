@@ -1,3 +1,7 @@
+
+//**
+		 //I need to be able to access the data first!!
+
 console.log('you got spotified');
 
 var spotify = require("spotify");
@@ -17,10 +21,6 @@ Client_Secret="ba98f42bfab9485292f67368d4081708";
 // The album that the song is from
 
 
-var artist;
-var songTitle;
-var prevLink;
-var album;
 
 
 
@@ -29,26 +29,36 @@ var album;
 
  	function spotifySong(song){
 		spotify.search({ type: 'track', query: song }, function(error, data) {
-			console.log(data);	
+
 		    if (error){
 		        return console.log(error);
 		    }
 		    var songObj= data['tracks']['items']; //inside the data, there are 2 arrays called tracks and items. these are thena ssigned to songObj
-		    console.log(songObj);
+		  	var stringified = JSON.stringify(songObj);
+		  	// console.log('this is data.tracks' + data.tracks);
+		  	// console.log('this is data.tracks.items' +data.tracks.items);
+		  	// console.log('this is data.tracks.items[1]' + data.tracks.items[1]);
 		    for (var i = 0; i < songObj.length; i++) {
-		    	console.log(i);
-		    }
-		    var songSpecs={
-		    	artist:
-		    	songTitle:
-		    	prevLink:
-		    	album:
-		    }
-		 //I need to be able to access the data first!!
-		    // Do something with 'data' 
+		    	console.log('Artists: '+ songObj[i].artists.length);
+		    	var songInfo = {
+					'artist(s)': songObj[i].artists.name, 
+					'song name': songObj[i]['name'], 
+					'preview song': songObj[i]['preview_url'], 
+					'album': songObj[i]['album']['name']
+			};
+		   
+			}
+			console.log("Artist Name: " + data.tracks.items[0].artists[0].name);
+			console.log("Song Name: " + data.tracks.items[0].name); 
+			console.log("Preview URL: " + data.tracks.items[0].preview_url); 	 
+	        console.log("Album Name: " + data.tracks.items[0].album.name);
+	    
+	      
+
 		});
 
-	}
+	};
+	spotifySong();
 
 module.exports.spotify_command=spotifySong;  
 
