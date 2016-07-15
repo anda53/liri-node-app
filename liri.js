@@ -1,11 +1,11 @@
 
 
-
-// var movieModule = require('./omdb');
-// var imported_movie_command = movieModule.movie_command;
-// var imported_movie_command = require('./omdb').movie_command;
-// var twitterKeys = require('./keys').twitterKeys;
-// var twitter= require('./twitter').twitter_command;  //requires twitter function getTweets
+var fsModule = require('file-system');
+var movieModule = require('./omdb');
+var imported_movie_command = movieModule.movie_command;
+var imported_movie_command = require('./omdb').movie_command;
+var twitterKeys = require('./keys').twitterKeys;
+var twitter= require('./twitter').twitter_command;  //requires twitter function getTweets
 var spotify = require('spotify');
 var spotifyFile = require('./spotify');
 var import_spotify_command = require('./spotify').spotify_command
@@ -47,18 +47,23 @@ if (command === 'movie-this'&& process.argv[3]){   //if command is equal to movi
 	import_spotify_command("I saw the sign");
 
 }else if(command === 'my-tweets'){
-	twitter(); //properly reference the function here!?
+	twitter(); 
 }
+//tke data from readfile and make into an array
+//assign this array to process.argv[2]
+//
  else if (command === 'do-what-it-says') { //If the 3rd argument is equal to 'do-what-it-says'
 	fs.readFile('random.txt', 'utf8', function(error, data) { //read file random.txt
 		if (error) {
 			return console.log(error);//if there is an error, then console.log error
 		};
-		var randomArray = data.split(','); //takes the data from the response and splits it up into an array separated by commas
-	
+		var liriArray = data.split(','); //takes the data from the response and splits it up into an array separated by commas
+		liriArray=command;
+		console.log(command);
+		console.log(liriArray);
+
 		
 	});
 };
 
 
-// module.exports.movie_command = getMovie; 
